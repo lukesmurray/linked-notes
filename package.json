@@ -2,8 +2,10 @@
   "name": "linked-notes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
+    "compile": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
