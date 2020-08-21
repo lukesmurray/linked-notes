@@ -1,43 +1,38 @@
-# Linked Notes
+# LSP Example
 
-A tool for parsing markdown notes specifically for academic note taking.
+Heavily documented sample code for https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
 
-Given a directory of markdown notes this tool can parse each note into a structured representation and implements an efficient cache for creating and editing references between those notes.
+## Functionality
 
-The two types of references the tool supports are wikilinks and citations.
+This Language Server works for plain text file. It has the following language features:
+- Completions
+- Diagnostics regenerated on each file change or configuration change
 
-## Design Goals
+It also includes an End-to-End test.
 
-- storage independence
-  - markdown files can be stored on disk, through a cloud program, or in a database.
-  - linked notes will define an interface `NotebookStorage` which contains functions for reading markdown documents, and notifying linked notes when any markdown documents are updated, added, or deleted in the notebook.
-- cache implementation
-  - linked notes will provide a cache for a `Notebook`
-  - the cache will make reopening a notebook very quick
-  - the cache will be serializable and can be exported or imported to linked notes
-  - the cache can be used to parse as few documents as possible during semantic changes such as deleting a document, renaming a document, or moving a document in the notebook
-- references
-  - linked notes will support referencing markdown files in a notebook using `[[wikilink]]` syntax
-  - linked notes will support [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) style citations
+## Structure
 
-## API Design
-
-Here is an example of the API I am imagining.
-
-```ts
-import Notebook, {
-  LocalNotebookStorage,
-  LocalStorageCache,
-} from "linked-notes";
-
-const notebook = new Notebook({
-  storage: new LocalNotebookStorage({
-    root: "src",
-    cache: new LocalStorageCache({
-      key: "foo",
-    }),
-  }),
-  mdFileRegex: /.*.(?:md|MD)/gm,
-  cslJSONFile: "library.json",
-});
 ```
+.
+├── client // Language Client
+│   ├── src
+│   │   ├── test // End to End tests for Language Client / Server
+│   │   └── extension.ts // Language Client entry point
+├── package.json // The extension manifest.
+└── server // Language Server
+    └── src
+        └── server.ts // Language Server entry point
+```
+
+## Running the Sample
+
+- Run `npm install` in this folder. This installs all necessary npm modules in both the client and server folder
+- Open VS Code on this folder.
+- Press Ctrl+Shift+B to compile the client and server.
+- Switch to the Debug viewlet.
+- Select `Launch Client` from the drop down.
+- Run the launch config.
+- If you want to debug the server as well use the launch configuration `Attach to Server`
+- In the [Extension Development Host] instance of VSCode, open a document in 'plain text' language mode.
+  - Type `j` or `t` to see `Javascript` and `TypeScript` completion.
+  - Enter text content such as `AAA aaa BBB`. The extension will emit diagnostics for all words in all-uppercase.
