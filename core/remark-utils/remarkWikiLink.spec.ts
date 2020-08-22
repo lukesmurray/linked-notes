@@ -50,54 +50,52 @@ function createWikilinkNode(content: string, start: UNIST.Point) {
   return wikilink;
 }
 
-describe("Wikilink", function () {
-  describe("parses wikilink", function () {
-    it("parses wikilink", () => {
-      const processor = wikilinkProcessor();
-      const content = "Wiki Link";
-      const ast = processor.runSync(processor.parse(`[[${content}]]`));
-      visit(ast, "wikilink", (actual) => {
-        const expected = createWikilinkNode(content, {
-          column: 1,
-          line: 1,
-          offset: 0,
-        });
-        expect(actual).to.deep.equal(expected);
+describe("Wikilink", () => {
+  it("parses wikilink", () => {
+    const processor = wikilinkProcessor();
+    const content = "Wiki Link";
+    const ast = processor.runSync(processor.parse(`[[${content}]]`));
+    visit(ast, "wikilink", (actual) => {
+      const expected = createWikilinkNode(content, {
+        column: 1,
+        line: 1,
+        offset: 0,
       });
+      expect(actual).to.deep.equal(expected);
     });
+  });
 
-    it("ignores reference", () => {
-      const processor = wikilinkProcessor();
-      const content = "Wiki Link";
-      const ast = processor.runSync(processor.parse(`[[${content}]][]`));
-      visit(ast, "wikilink", () => {
-        throw new Error("expect collapsed reference");
-      });
+  it("ignores reference", () => {
+    const processor = wikilinkProcessor();
+    const content = "Wiki Link";
+    const ast = processor.runSync(processor.parse(`[[${content}]][]`));
+    visit(ast, "wikilink", () => {
+      throw new Error("expect collapsed reference");
     });
+  });
 
-    it("ignores empty content", () => {
-      const processor = wikilinkProcessor();
-      const content = "         ";
-      const ast = processor.runSync(processor.parse(`[[${content}]]`));
-      visit(ast, "wikilink", () => {
-        throw new Error("expect empty content to be ignored");
-      });
+  it("ignores empty content", () => {
+    const processor = wikilinkProcessor();
+    const content = "         ";
+    const ast = processor.runSync(processor.parse(`[[${content}]]`));
+    visit(ast, "wikilink", () => {
+      throw new Error("expect empty content to be ignored");
     });
+  });
 
-    it("parsees with references", () => {
-      const processor = wikilinkProcessor();
-      const content = "this is the wiki link";
-      const ast = processor.runSync(
-        processor.parse(`[[${content}]] [reference]`)
-      );
-      visit(ast, "wikilink", (actual) => {
-        const expected = createWikilinkNode(content, {
-          column: 1,
-          line: 1,
-          offset: 0,
-        });
-        expect(actual).to.deep.equal(expected);
+  it("parsees with references", () => {
+    const processor = wikilinkProcessor();
+    const content = "this is the wiki link";
+    const ast = processor.runSync(
+      processor.parse(`[[${content}]] [reference]`)
+    );
+    visit(ast, "wikilink", (actual) => {
+      const expected = createWikilinkNode(content, {
+        column: 1,
+        line: 1,
+        offset: 0,
       });
+      expect(actual).to.deep.equal(expected);
     });
   });
 });

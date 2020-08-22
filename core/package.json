@@ -23,6 +23,9 @@
     "collapse-white-space": "^1.0.6",
     "remark": "^12.0.1",
     "remark-frontmatter": "^2.0.0",
-    "unified": "^9.2.0"
+    "unified": "^9.2.0",
+    "unist-util-select": "^3.0.1",
+    "yaml": "^1.10.0",
+    "yaml-ast-parser": "0.0.43"
   }
 }
