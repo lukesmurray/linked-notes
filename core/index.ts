@@ -1,7 +1,6 @@
-export class HelloWorld {
-  constructor() {}
+import remarkWikilink from "./remark-utils/remarkWikilink";
 
-  public sayHello() {
-    console.log("hello");
-  }
-}
+/**
+ * module exports
+ */
+export { remarkWikilink };
