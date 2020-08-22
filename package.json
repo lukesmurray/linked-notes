@@ -1,17 +1,17 @@
 {
-  "name": "lsp-sample",
-  "description": "A language server example",
-  "author": "Microsoft Corporation",
+  "name": "linked-notes-lsp",
+  "description": "A language server for linked markdown notes",
+  "author": "Luke Murray",
   "license": "MIT",
   "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukesmurray/linked-notes"
   },
-  "publisher": "vscode-samples",
+  "publisher": "lukesmurray",
   "categories": [],
   "keywords": [
-    "multi-root ready"
+    "markdown"
   ],
   "engines": {
     "vscode": "^1.43.0"
@@ -25,12 +25,6 @@
       "type": "object",
       "title": "Linked Notes Language Server Configuration",
       "properties": {
-        "linkedNotesLanguageServer.maxNumberOfProblems": {
-          "scope": "resource",
-          "type": "number",
-          "default": 100,
-          "description": "Controls the maximum number of problems produced by the server."
-        },
         "linkedNotesLanguageServer.trace.server": {
           "scope": "window",
           "type": "string",

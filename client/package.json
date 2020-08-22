@@ -1,10 +1,10 @@
 {
-  "name": "lsp-sample-client",
-  "description": "VSCode part of a language server",
-  "author": "Microsoft Corporation",
+  "name": "linked-notes-lsp-client",
+  "description": "VSCode client for linked notes LSP Server",
+  "author": "Luke Murray",
   "license": "MIT",
   "version": "0.0.1",
-  "publisher": "vscode",
+  "publisher": "lukesmurray",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukesmurray/linked-notes"

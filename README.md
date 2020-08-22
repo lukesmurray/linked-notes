@@ -11,6 +11,10 @@
 - Select `Launch Client` from the drop down.
 - Run the launch config.
 - If you want to debug the server as well use the launch configuration `Attach to Server`
-- In the [Extension Development Host] instance of VSCode, open a document in 'plain text' language mode.
-  - Type `j` or `t` to see `Javascript` and `TypeScript` completion.
-  - Enter text content such as `AAA aaa BBB`. The extension will emit diagnostics for all words in all-uppercase.
+- In the [Extension Development Host] instance of VSCode the extension will be active.
+  - The initial workspace for testing is supplied in `client/testFixture`
+
+### Logging Support
+
+- set `"linkedNotesLanguageServer.trace.server": "verbose"` in your workspace settings to view the language server communications in the output channel
+- you can save and load the file to microsoft's [LSP Inspector](https://microsoft.github.io/language-server-protocol/inspector/)

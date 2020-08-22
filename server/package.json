@@ -1,8 +1,8 @@
 {
-  "name": "lsp-sample-server",
-  "description": "Example implementation of a language server in node.",
+  "name": "linked-notes-lsp-server",
+  "description": "LSP Server for linked markdown notes.",
   "version": "1.0.0",
-  "author": "Microsoft Corporation",
+  "author": "Luke Murray",
   "license": "MIT",
   "engines": {
     "node": "*"
