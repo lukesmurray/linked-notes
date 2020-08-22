@@ -1,14 +1,25 @@
 {
-	"compilerOptions": {
-		"target": "es2019",
-		"lib": ["ES2019"],
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"strict": true,
-		"outDir": "out",
-		"rootDir": "src"
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", ".vscode-test"]
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["ES2019"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "out",
+    "rootDir": "src",
+    // make it possible to import core using "core" instead of relative paths
+    "baseUrl": ".",
+    "paths": {
+      "core": ["../core"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", ".vscode-test"],
+  "references": [
+    // add a reference to the core project
+    {
+      "path": "../core"
+    }
+  ]
 }
